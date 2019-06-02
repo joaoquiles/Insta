@@ -12,13 +12,13 @@
 			<center>
 				<h1>InstaFake</h1>
 				<h3>Cadastre-se para ver fotos e vídeos dos seus amigos</h3>
-				<input type="name" name="" placeholder="Nome do usuário">
+				<input type="name" name="nome_user" placeholder="Nome do usuário">
 				<br>
-				<input type="name" name="" placeholder="Nome completo">
+				<input type="name" name="nome_completo" placeholder="Nome completo">
 				<br>
-				<input type="password" name="" placeholder="Senha">
+				<input type="password" name="senha" placeholder="Senha">
 				<br>
-				<input type="password" name="" placeholder="Confirmar a senha">
+				<input type="password" name="confirmar" placeholder="Confirmar a senha">
 				<br>
 				<input type="submit" placeholder="Cadastre-se">
 				<br><br><br>
