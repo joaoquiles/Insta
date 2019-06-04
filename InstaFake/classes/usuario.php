@@ -34,6 +34,16 @@ class Usuario(){
 
 	public function login($nome_user,$senha){
 		global $pdo;
-		$sql = pdo->prepare
-	}
+		$sql = pdo->prepare("SELECT id_usuario from usuario WHERE nome = :n AND senha = :s" );
+		$sql->bindValue(":n",$nome_user);
+		$sql->bindValue(":s",$senha);
+		$sql->execute();
+		if($sql->rowCount() >0){
+				$dado = $sql->fetch();
+				session_start();
+				$_SESSION["id_usuario"]=$dado["id_usuario"];
+				return true;
+		}else{
+			return false;
+		}
 }
