@@ -1,49 +1,50 @@
 <?php
 /**
- * Classe Usuario para conexão com o banco,cadastro e confirmar senha
+ * funcoes usuario
  */
-class Usuario(){
-	private $pdo;
-	public function conexao($nome,$host,$usuario,$senha)
-	{
-		global $pdo;
-		try{
-			pdo = new PDO("mysql:dbname=".$nome.";host=".$host,$usuario,$senha);
-		}catch(PDOEexcption $e){
-			global $msg = $e->getMessage();
-		}
+function getConnection()
+{
+	$url = 'mysql:host=localhost;dbname=projeto_login';
+	$name = 'root';
+	$senha = '';
+	try {
+		$conn = new PDO($url,$name,$senha);
+		return $conn;
+	} catch (PDOException $e) {
+		echo "Erro de conexão :".$e->getMessage();
 	}
-
-	public function cadastro($nome_user,$nome,$senha){
-		global $pdo;
-		$sql = $pdo->prepare("SELECT id FROM cliente WHERE  email = :e");
-		$sql->bindValue(":n",$nome);
-		$sql->execute();
-		if($sql->rowCount()>0){
-			return false;
-		}else{
-			$sql = $pdo->prepare("INSERT INTO cliente(nome,nome_completo,senha)
-				VALUES(:n,:nc,:s)");
+}
+function insert($nome,$nome_completo,$sen,$conn){
+	try {
+		$sql = 'INSERT INTO cliente(nome,nome_completo,senha)
+		VALUES(:n,:n_c,:s)';
+		$stnt = $conn->prepare($sql);
+		$stnt->bindParam(':n',$nome);
+		$stnt->bindParam(':n_c',$nome_completo);
+		$stnt->bindParam(':s',$sen);
+		if ($stnt->execute()) {
+			echo "Cadastro feito com seucesso ";
+		} else {
+			echo "Erro ao cadastrar !";
 		}
-		$sql->bindValue(":n",$nome_user);
-		$sql->bindValue(":nc",$nome);
-		$sql->bindValue(":s",$senha);
-		$sql->execute();
-		return true;
+		
+	} catch (PDOException $e) {
+		echo "Erro de banco :".$e->getMessage();
 	}
-
-	public function login($nome_user,$senha){
-		global $pdo;
-		$sql = pdo->prepare("SELECT id_usuario from usuario WHERE nome = :n AND senha = :s" );
-		$sql->bindValue(":n",$nome_user);
-		$sql->bindValue(":s",$senha);
-		$sql->execute();
-		if($sql->rowCount() >0){
-				$dado = $sql->fetch();
-				session_start();
-				$_SESSION["id_usuario"]=$dado["id_usuario"];
-				return true;
+}
+function login($nome,$senha,$conn){
+	try {
+		$sql = 'SELECT * FROM cliente WHERE nome = :n AND senha = :s';
+		$stnt = $conn->prepare($sql);
+		$stnt->bindParam(':n',$nome);
+		$stnt->bindParam(':s',$senha);
+		$stnt->execute();
+		if($stnt->rowCount()>0){
+			echo "Existe esse usuario cadastrado:".$nome.$senha;
 		}else{
-			return false;
+			echo "Usuario nao existe";
 		}
+	} catch (PDOException $e) {
+		echo'Erro de exception'.$e->getMessage();	
+	}
 }

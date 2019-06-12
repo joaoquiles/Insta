@@ -1,13 +1,17 @@
-<?php
-isset($_POST('nome_user')){
-		$nome = addcslashes($_POST['nome_user']);
-		$nome_completo = addcslashes($_POST['nome']);
-		$senha = addcslashes($_POST['senha']);
-		if(!empty(nome) && !empty(nome_user) && !empty(senha)){
-					echo "Cadastrando";
-		}else{
-			echo "Preencha corretamente";
-		}
-}
 
-?>
+<?php
+include './classes/usuario.php';
+
+$nome = $_POST['nome'];
+$nome_completo = $_POST['nome_completo'];
+$senha = $_POST['senha'];
+$confirmar = $_POST['confirmar'];
+if($senha==$confirmar){
+	echo "Senhas iguais";
+}
+try{
+    $conn = getConnection();
+    insert($nome, $nome_completo, $senha, $conn);
+} catch (PDOException $ex){
+    echo 'Erro'.$ex->getMessage();
+}
