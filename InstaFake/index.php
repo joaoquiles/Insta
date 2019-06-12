@@ -11,9 +11,9 @@
 		<form method="POST" action="processa_2.php">
 			<center>
 				<h1>InstaFake</h1>
-				<input type="name" name="nome" placeholder="Nome do usuário">
+				<input type="name" name="nome" placeholder="Nome do usuário" maxlength="30">
 				<br>
-				<input type="password" name="senha" placeholder="Senha">
+				<input type="password" name="senha" placeholder="Senha" maxlength="30">
 				<br><br>
 				<input type="submit" placeholder="Enviar">
 				<br><br><br>
