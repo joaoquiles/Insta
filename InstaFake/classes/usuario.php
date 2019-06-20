@@ -27,7 +27,7 @@ function insert($nome,$nome_completo,$sen,$conn){
 		} else {
 			echo "Erro ao cadastrar !";
 		}
-		
+
 	} catch (PDOException $e) {
 		echo "Erro de banco :".$e->getMessage();
 	}
@@ -41,10 +41,24 @@ function login($nome,$senha,$conn){
 		$stnt->execute();
 		if($stnt->rowCount()>0){
 			echo "Existe esse usuario cadastrado:".$nome.$senha;
+			header("location: perfil.php");
 		}else{
 			echo "Usuario nao existe";
 		}
 	} catch (PDOException $e) {
-		echo'Erro de exception'.$e->getMessage();	
+		echo'Erro de exception'.$e->getMessage();
 	}
+}
+function buscarUsuario($palavra,$conn){
+	try {
+		$res = [];
+    $stnt = $conn->prepare("SELECT nome FROM cliente where nome = :n");
+		$stnt->bindParam(':n',$palavra);
+    $stnt->execute();
+    $res = $stnt->fetch(PDO::FETCH_ASSOC);
+    return $res;
+	} catch (PDOException $e) {
+		echo "PDOException : ".$e->getMessage();
+	}
+
 }

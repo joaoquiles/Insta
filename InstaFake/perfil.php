@@ -7,15 +7,17 @@
 </head>
 <body>
 	<div id="div1">
-		<h1>Instagram</h1>
-		<input type="text" name="busca" placeholder="Buscar">
+		<form method="post" action="processa_perfil.php">
+			<h1>Instagram</h1>
+			<input type="text" name="busca" placeholder="Buscar">
+			<input type="submit" name="botao" value="Buscar">
+		</form>
 	</div>
-	<div>
-		
+	<div id="div2">
+		<h2>Informaçoes do perfil</h2>
 	</div>
-	<div>
-		
+	<div id="div3">
+    <h2>Fotos</h2>
 	</div>
-
 </body>
 </html>
