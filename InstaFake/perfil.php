@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div id="div1">
-		<form method="post" action="processa_perfil.php">
+		<form method="post" action="buscarUsuarios.php">
 			<h1>Instagram</h1>
 			<input type="text" name="busca" placeholder="Buscar">
 			<input type="submit" name="botao" value="Buscar">

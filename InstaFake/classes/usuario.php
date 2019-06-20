@@ -51,11 +51,12 @@ function login($nome,$senha,$conn){
 }
 function buscarUsuario($palavra,$conn){
 	try {
+		$busca=$palavra.'%';
 		$res = [];
-    $stnt = $conn->prepare("SELECT nome FROM cliente where nome = :n");
-		$stnt->bindParam(':n',$palavra);
+    $stnt = $conn->prepare("SELECT * FROM cliente where nome LIKE :n");
+		$stnt->bindParam(':n',$busca);
     $stnt->execute();
-    $res = $stnt->fetch(PDO::FETCH_ASSOC);
+    $res = $stnt->fetchAll(PDO::FETCH_ASSOC);
     return $res;
 	} catch (PDOException $e) {
 		echo "PDOException : ".$e->getMessage();

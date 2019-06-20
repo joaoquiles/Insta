@@ -5,7 +5,10 @@ try {
   $resposta=[];
   $conn = getConnection();
   $resposta=buscarUsuario($bus,$conn);
-  echo "Elementos :".count($resposta);
+  <table>
+      
+  </table>
+
 } catch (PDOException $e) {
      echo "Erro de Conexao";
 }

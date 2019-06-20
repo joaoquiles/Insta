@@ -6,19 +6,19 @@ input{
 	display: block;
 	height: 35px;
 	width: 200px;
-	border-radius: 5px;
+	border-radius: 20px;
 	font-size:13pt;
 	padding: 5px 10px;
 	border: 1px solid;
 	border-color: #DCDCDC;
 	background-color: #FBFBFB;
+	text-align: center;
+	cursor: pointer;
+	transition: 0.25;
 }
 input[type=submit]{
 	background-color: #00BFFF;
 	border: none;
-}
-h1{
-	
 }
 #div-1{
 	border: 1px solid;
@@ -46,5 +46,5 @@ h1{
 #imagem{
 	position: absolute;
 	left: 250px;
-	
+
 }

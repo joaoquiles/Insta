@@ -1,3 +1,11 @@
+input{
+	text-align: center;
+	border-radius: 25px;
+}
+input[type=submit]{
+	background-color: #00BFFF;
+	border: none;
+}
 #div1{
 	display: inline;
 	position: absolute;
