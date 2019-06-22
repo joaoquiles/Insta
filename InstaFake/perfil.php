@@ -1,3 +1,12 @@
+<?php
+     require_once 'classes/usuario.php';
+		 session_start();
+		 if (isset($_SESSION['id_usuario'])) {
+		 	$pessoa = new usuario("projeto_login","localhost","root","");
+			$dados=$pessoa->buscaDadosUsuario($_SESSION['id_usuario']);
+			print($_SESSION['id_usuario']);
+		 }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +27,16 @@
 	</div>
 	<div id="div2">
 		<img src="https://img.icons8.com/ios/100/000000/name.png" id="img4">
-		<h2>Nome do Usuario</h2>
+		<?php
+		if(isset($_SESSION['id_usuario'])){
+    ?>
+				<h2>
+					<?php
+							echo $dados['nome_completo'];
+					 ?>
+				</h2>
+		<?php }
+		?>
 		<button class="btn btn-blue">Seguidores</button>
 		<button class="btn btn-blue btn-blue-position">Seguindo</button>
 	</div>

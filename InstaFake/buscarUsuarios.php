@@ -37,7 +37,9 @@ $dados = $usuario->buscarUsuario($palavra);
                       }
                       ?>
                 <td>
-                    <button class="botao">Seguir</button>
+									<form method="post" action="processa_busca">
+										<input type="submit" name="seguir" value="Seguir">
+									</form>
                 </td>
                       <?php
                       echo '</tr>';

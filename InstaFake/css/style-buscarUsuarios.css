@@ -5,6 +5,13 @@
   text-align: center;
   cursor: pointer;
   color: #fff;
+  width: 10%;
+  border: 1px solid;
+	border-color: #DCDCDC;
+	background-color: #FBFBFB;
+	text-align: center;
+	cursor: pointer;
+	transition: 0.25;
 }
 #layout{
   display: block;
@@ -23,20 +30,6 @@
   left: 30%;
   right:30%;
   text-align: center;
-}
-input{
-	display: block;
-	height: 35px;
-	width: 200px;
-	border-radius: 20px;
-	font-size:13pt;
-	padding: 5px 10px;
-	border: 1px solid;
-	border-color: #DCDCDC;
-	background-color: #FBFBFB;
-	text-align: center;
-	cursor: pointer;
-	transition: 0.25;
 }
 #img1{
 	position: absolute;

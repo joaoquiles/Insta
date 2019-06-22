@@ -4,7 +4,9 @@ $nome = $_POST['nome'];
 $senha = $_POST['senha'];
 try {
 	$usuario = new Usuario("projeto_login","localhost","root","");
-	$usuario->login($nome,$senha);
+	if($usuario->login($nome,$senha)){
+			header("location: perfil.php");
+	}
 } catch (PDOException $e) {
 	echo "Erro de exceção";
 }

@@ -41,15 +41,19 @@ class Usuario
 	}
 	function login($nome,$senha){
 		try {
+			echo "nome :".$nome.$senha;
 			$sql = 'SELECT * FROM cliente WHERE nome = :n AND senha = :s';
 			$stnt = $this->pdo->prepare($sql);
 			$stnt->bindParam(':n',$nome);
 			$stnt->bindParam(':s',$senha);
 			$stnt->execute();
 			if($stnt->rowCount()>0){
-				echo "Existe esse usuario cadastrado:".$nome.$senha;
-				header("location: perfil.php");
+				return true;
+				$dados = $stnt->fetch();
+				session_start();
+				$_SESSION['id_usuario']=$dados['id'];
 			}else{
+				return false;
 				echo "Usuario nao existe";
 			}
 		} catch (PDOException $e) {
@@ -68,5 +72,12 @@ class Usuario
 		} catch (PDOException $e) {
 			echo "PDOException : ".$e->getMessage();
 		}
+	}
+	function buscaDadosUsuario($id){
+		$stnt = $this->pdo->prepare('SELECT * FROM cliente where id = :id');
+		$stnt->bindParam(":id",$id);
+		$stnt->execute();
+		$dados = $stnt->fetch();
+		return $dados;
 	}
 }
