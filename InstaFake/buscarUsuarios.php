@@ -1,8 +1,8 @@
 <?php
 require_once 'classes/usuario.php';
-$conn = getConnection();
+$usuario = new Usuario("projeto_login","localhost","root","");
 $palavra = addslashes($_POST['busca']);
-$dados = buscarUsuario($palavra,$conn);
+$dados = $usuario->buscarUsuario($palavra);
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,9 +14,13 @@ $dados = buscarUsuario($palavra,$conn);
 <body>
 	<section>
 		<div id="layout">
+			<img src="https://img.icons8.com/ios/48/000000/instagram-new.png" id="img1">
+			<h1>InstaFake</h1>
+			<img src="https://icon-icons.com/icons2/38/PNG/96/findtheuser_search_search_theuser_4518.png" id="img4">
+			<a href="cadastro.php"><img src="https://img.icons8.com/ios/64/000000/add-user-male.png" id="img3" alt="Novo Usuário"></a>
+			<a href="perfil.php"><img src="https://img.icons8.com/carbon-copy/64/000000/undo.png" id="img2" alt="Voltar"></a>
 		</div>
     <div id="div1">
-
       <center><table>
         <tr>
             <td>Nome </td>
@@ -33,7 +37,7 @@ $dados = buscarUsuario($palavra,$conn);
                       }
                       ?>
                 <td>
-                    <a href=""> Seguir </a>
+                    <button class="botao">Seguir</button>
                 </td>
                       <?php
                       echo '</tr>';
@@ -43,6 +47,5 @@ $dados = buscarUsuario($palavra,$conn);
       </table></center>
     </div>
   </section>
-
 </body>
 </html>

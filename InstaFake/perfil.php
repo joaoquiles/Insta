@@ -13,8 +13,8 @@
 			<input type="text" name="busca" placeholder="Buscar">
 			<input type="submit" name="botao" value="Buscar">
 		</form>
-		<img src="https://img.icons8.com/ios/64/000000/add-user-male.png" id="img3">
-		<img src="https://img.icons8.com/carbon-copy/64/000000/undo.png" id="img2" >
+		<a href="cadastro.php"><img src="https://img.icons8.com/ios/64/000000/add-user-male.png" id="img3" alt="Novo Usuário"></a>
+		<a href="index.php"><img src="https://img.icons8.com/carbon-copy/64/000000/undo.png" id="img2" alt="Voltar"></a>
 	</div>
 	<div id="div2">
 		<img src="https://img.icons8.com/ios/100/000000/name.png" id="img4">

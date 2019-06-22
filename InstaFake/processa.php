@@ -10,8 +10,8 @@ if(!empty($nome) && !empty($nome_completo) && !empty($senha) && !empty($confirma
 	echo "Preencheu todos os campos";
 	if($senha==$confirmar){
 		try{
-    		$conn = getConnection();
-    		insert($nome, $nome_completo, $senha, $conn);
+    		$usuario = new Usuario("projeto_login","localhost","root","");
+    		$usuario->insert($nome, $nome_completo, $senha);
 		} catch (PDOException $ex){
     		echo 'Erro'.$ex->getMessage();
 		}
