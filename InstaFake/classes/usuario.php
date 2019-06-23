@@ -48,10 +48,14 @@ class Usuario
 			$stnt->bindParam(':s',$senha);
 			$stnt->execute();
 			if($stnt->rowCount()>0){
-				return true;
 				$dados = $stnt->fetch();
 				session_start();
-				$_SESSION['id_usuario']=$dados['id'];
+				if($dados['id'] > 0){
+					$_SESSION['id_usuario']=$dados['id'];
+					return true;
+				}else {
+					return false;
+				}
 			}else{
 				return false;
 				echo "Usuario nao existe";
@@ -79,5 +83,29 @@ class Usuario
 		$stnt->execute();
 		$dados = $stnt->fetch();
 		return $dados;
+	}
+	function verificarSeguidor($meu_id,$id_seguidor){
+		$sql='SELECT * FROM pessoa WHERE idPessoa=:meu_seguidor AND idUsuario=:meu_id';
+		$stnt = $this->pdo->prepare($sql);
+		$stnt->bindParam(":meu_seguidor",$id_seguidor);
+		$stnt->bindParam(":meu_id",$meu_id);
+		$stnt->execute();
+		if($stnt->rowCount()>0){
+			echo "Já sigo essa Pessoa !";
+			return false;
+		}else {
+			return true;
+		}
+	}
+	function seguir($meu_id,$id_seguidor,$nome,$nome_completo,$senha){
+			$sql='INSERT INTO pessoa(idPessoa,nome,nome_completo,senha,idUsuario)
+			VALUES(:id_seguidor,:nome,:nome_completo,:senha,:meu_id)';
+			$stnt = $this->pdo->prepare($sql);
+			$stnt->bindParam(":id_seguidor",$id_seguidor);
+			$stnt->bindParam(":nome",$nome);
+			$stnt->bindParam(":nome_completo",$nome_completo);
+			$stnt->bindParam(":senha",$senha);
+			$stnt->bindParam(":meu_id",$meu_id);
+			$stnt->execute();
 	}
 }

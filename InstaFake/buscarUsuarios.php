@@ -37,9 +37,7 @@ $dados = $usuario->buscarUsuario($palavra);
                       }
                       ?>
                 <td>
-									<form method="post" action="processa_busca">
-										<input type="submit" name="seguir" value="Seguir">
-									</form>
+									<a href="buscarUsuarios.php?id_seguir=<?php echo $dados[$i]['id']; ?>" class="botao">Seguir</a>
                 </td>
                       <?php
                       echo '</tr>';
@@ -51,3 +49,11 @@ $dados = $usuario->buscarUsuario($palavra);
   </section>
 </body>
 </html>
+<?php
+     if(isset($_GET['id_seguir'])){
+			 session_start();
+			 $meu_id = addslashes($_SESSION['id_usuario']);
+			 $id_seguir=addslashes($_GET['id_seguir']);
+			 var_dump($meu_id,$id_seguir);
+		 }
+?>

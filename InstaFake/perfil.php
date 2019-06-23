@@ -4,8 +4,7 @@
 		 if (isset($_SESSION['id_usuario'])) {
 		 	$pessoa = new usuario("projeto_login","localhost","root","");
 			$dados=$pessoa->buscaDadosUsuario($_SESSION['id_usuario']);
-			print($_SESSION['id_usuario']);
-		 }
+     }
 ?>
 <!DOCTYPE html>
 <html>
