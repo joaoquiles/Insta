@@ -6,9 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="css/style-cadastro.css">
 </head>
 <body >
-	<img src="image/image.png" id="imagem" width="400" height="600"> 
+	<img src="image/image.png" id="imagem" width="400" height="600">
 	<div id="div-1">
-		<form method="POST" action="processa_2.php">
+		<form method="POST" action="formularioIndex.php">
 			<center>
 				<h1>InstaFake</h1>
 				<input type="name" name="nome" placeholder="Nome do usuário" maxlength="30">
@@ -17,14 +17,14 @@
 				<br><br>
 				<input type="submit" placeholder="Enviar">
 				<br><br><br>
-				<a href="">Esqueceu a senha ?</a>	
+				<a href="">Esqueceu a senha ?</a>
 			</center>
 		</form>
 	</div>
 	<div id="div-2">
 		<center><p>Não tem uma conta ? <a href="cadastro.php">Cadastre-se</a></p></center>
 	</div>
-	
+
 	<div id="div-3"></div>
 </body>
 </html>

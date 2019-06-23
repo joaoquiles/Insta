@@ -31,7 +31,7 @@
     ?>
 				<h2>
 					<?php
-							echo $dados['nome_completo'];
+							echo $dados[0]['nome_completo'];
 					 ?>
 				</h2>
 		<?php }

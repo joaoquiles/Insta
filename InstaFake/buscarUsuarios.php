@@ -54,6 +54,10 @@ $dados = $usuario->buscarUsuario($palavra);
 			 session_start();
 			 $meu_id = addslashes($_SESSION['id_usuario']);
 			 $id_seguir=addslashes($_GET['id_seguir']);
-			 var_dump($meu_id,$id_seguir);
+			 $dados=$usuario->buscaDadosUsuario($id_seguir);
+			 $nome=$dados[0]['nome'];
+			 $nome_completo=$dados[0]['nome_completo'];
+			 $senha=$dados[0]['senha'];
+			 $usuario->seguir($meu_id,$id_seguir,$nome,$nome_completo,$senha);
 		 }
 ?>

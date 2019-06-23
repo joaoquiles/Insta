@@ -81,7 +81,7 @@ class Usuario
 		$stnt = $this->pdo->prepare('SELECT * FROM cliente where id = :id');
 		$stnt->bindParam(":id",$id);
 		$stnt->execute();
-		$dados = $stnt->fetch();
+		$dados = $stnt->fetchAll(PDO :: FETCH_ASSOC);
 		return $dados;
 	}
 	function verificarSeguidor($meu_id,$id_seguidor){
@@ -106,6 +106,12 @@ class Usuario
 			$stnt->bindParam(":nome_completo",$nome_completo);
 			$stnt->bindParam(":senha",$senha);
 			$stnt->bindParam(":meu_id",$meu_id);
-			$stnt->execute();
+			if($stnt->execute()){
+				echo "Seguindo";
+				true;
+			}else {
+				echo "Erro ao seguir";
+				false;
+			}
 	}
 }
