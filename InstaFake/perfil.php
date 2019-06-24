@@ -4,6 +4,7 @@
 		 if (isset($_SESSION['id_usuario'])) {
 		 	$pessoa = new usuario("projeto_login","localhost","root","");
 			$dados=$pessoa->buscaDadosUsuario($_SESSION['id_usuario']);
+      $quantidadeSeguidores =$pessoa->quantidadeSeguidores($_SESSION['id_usuario']);
      }
 ?>
 <!DOCTYPE html>
@@ -38,6 +39,16 @@
 		?>
 		<button class="btn btn-blue">Seguidores</button>
 		<button class="btn btn-blue btn-blue-position">Seguindo</button>
+    <?php
+    if(isset($_SESSION['id_usuario'])){
+    ?>
+        <h3>
+          <?php
+              echo $quantidadeSeguidores[0];
+           ?>
+        </h3>
+    <?php }
+    ?>
 	</div>
 	<div id="div3">
     <h2>Fotos</h2>

@@ -114,4 +114,15 @@ class Usuario
 				false;
 			}
 	}
+	function quantidadeSeguidores($id){
+		$sql = 'SELECT COUNT(*) FROM pessoa WHERE pessoa.idUsuario=:n';
+		$stnt = $this->pdo->prepare($sql);
+		$stnt->bindParam(":n",$id);
+		$stnt->execute();
+		return $stnt->fetch();
+
+	}
+	function seguindo($id){
+
+	}
 }

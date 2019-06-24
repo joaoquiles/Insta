@@ -41,6 +41,12 @@ input{
 	top:35px;
 	left: 40%;
 }
+h3{
+	position: absolute;
+	left: 62.5%;
+	top: 10%;
+	font-size: 32pt;
+}
 #img1{
 	position: absolute;
 	top: 15%;
