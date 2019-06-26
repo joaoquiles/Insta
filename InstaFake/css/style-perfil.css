@@ -47,6 +47,12 @@ h3{
 	top: 10%;
 	font-size: 32pt;
 }
+h4{
+	position: absolute;
+	left: 52.5%;
+	top: 5%;
+	font-size: 32pt;
+}
 #img1{
 	position: absolute;
 	top: 15%;

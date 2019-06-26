@@ -98,6 +98,12 @@ class Usuario
 		}
 	}
 	function seguir($meu_id,$id_seguidor,$nome,$nome_completo,$senha){
+		$sql='SELECT * FROM pessoa WHERE idPessoa=:meu_seguidor AND idUsuario=:meu_id';
+		$stnt = $this->pdo->prepare($sql);
+		$stnt->bindParam(":meu_seguidor",$id_seguidor);
+		$stnt->bindParam(":meu_id",$meu_id);
+		$stnt->execute();
+		if($stnt->rowCount()==0){
 			$sql='INSERT INTO pessoa(idPessoa,nome,nome_completo,senha,idUsuario)
 			VALUES(:id_seguidor,:nome,:nome_completo,:senha,:meu_id)';
 			$stnt = $this->pdo->prepare($sql);
@@ -113,6 +119,7 @@ class Usuario
 				echo "Erro ao seguir";
 				false;
 			}
+		}
 	}
 	function quantidadeSeguidores($id){
 		$sql = 'SELECT COUNT(*) FROM pessoa WHERE pessoa.idUsuario=:n';
@@ -122,7 +129,11 @@ class Usuario
 		return $stnt->fetch();
 
 	}
-	function seguindo($id){
-
+	function quantidadeSeguindo($id){
+		$sql = 'SELECT COUNT(*) FROM pessoa WHERE pessoa.idPessoa=:n';
+		$stnt = $this->pdo->prepare($sql);
+		$stnt->bindParam(":n",$id);
+		$stnt->execute();
+		return $stnt->fetch();
 	}
 }
