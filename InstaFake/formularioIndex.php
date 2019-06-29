@@ -1,7 +1,7 @@
 <?php
-include './classes/usuario.php';
-$nome = $_POST['nome'];
-$senha = $_POST['senha'];
+include 'classes/usuario.php';
+$nome = addslashes($_POST['nome']);
+$senha = addslashes($_POST['senha']);
 try {
 	$usuario = new Usuario("projeto_login","localhost","root","");
 	if($usuario->login($nome,$senha)){
