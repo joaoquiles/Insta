@@ -1,11 +1,15 @@
+
 <?php
+/**
+	 * Instanciando objeto pessoa e obtendo valores do usuario
+	 */
      require_once 'classes/usuario.php';
 		 session_start();
 		 if (isset($_SESSION['id_usuario'])) {
 		 	$pessoa = new usuario("projeto_login","localhost","root","");
 			$dados=$pessoa->buscaDadosUsuario($_SESSION['id_usuario']);
-      $quantidadeSeguidores =$pessoa->quantidadeSeguidores($_SESSION['id_usuario']);
-      $quantidadeSeguindo = $pessoa->quantidadeSeguindo($_SESSION['id_usuario']);
+      		$quantidadeSeguidores =$pessoa->quantidadeSeguidores($_SESSION['id_usuario']);
+      		$quantidadeSeguindo = $pessoa->quantidadeSeguindo($_SESSION['id_usuario']);
      }
 ?>
 <!DOCTYPE html>
@@ -20,8 +24,8 @@
 		<img src="https://img.icons8.com/ios/48/000000/instagram-new.png" id="img1">
 		<form method="post" action="buscarUsuarios.php">
 			<h1>InstaFake</h1>
-			<input type="text" name="busca" placeholder="Buscar">
-			<input type="submit" name="botao" value="Buscar">
+			<input type="text" name="busca" placeholder="Buscar" class="input-busca">
+			<input type="submit" name="botao" value="Buscar" class="btn-busca">
 		</form>
 		<a href="cadastro.php"><img src="https://img.icons8.com/ios/64/000000/add-user-male.png" id="img3" alt="Novo Usuário"></a>
 		<a href="index.php"><img src="https://img.icons8.com/carbon-copy/64/000000/undo.png" id="img2" alt="Voltar"></a>
@@ -38,8 +42,16 @@
 				</h2>
 		<?php }
 		?>
-		<button class="btn btn-blue">Seguidores</button>
-		<button class="btn btn-blue btn-blue-position">Seguindo</button>
+    <div class="btn-seguir">
+			<form action="" method="POST">
+		    	<input type="submit" placeholder="Seguindo" value="seguindo" >
+			</form>
+		</div>
+		<div class="btn-seguidores">
+			<form action="form_perfil.php" method="POST">
+		    	<input type="submit" placeholder="Seguidores" value="seguidores" >
+			</form>
+		</div>
     <?php
     if(isset($_SESSION['id_usuario'])){
     ?>
