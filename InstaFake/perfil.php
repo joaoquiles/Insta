@@ -42,7 +42,7 @@
 				</h2>
 		<?php }
 		?>
-    <div class="btn-seguir">
+    	<div class="btn-seguir">
 			<form action="" method="POST">
 		    	<input type="submit" placeholder="Seguindo" value="seguindo" >
 			</form>

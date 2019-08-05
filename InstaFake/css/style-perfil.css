@@ -2,26 +2,26 @@
 .btn-seguir{
 	position: absolute;
 	top: 10%;
-	left: 40%;
+	left: 50%;
 	width: 17%;
 }
 .btn-busca{
 	position: absolute;
-	top: 10%;
-	left: 30%;
+	top: 15%;
+	left: 60%;
 	width: 10%;
 }
 .btn-seguidores{
 	position: absolute;
 	top: 10%;
-	left: 30%;
+	left: 60%;
 	width: 10%;
 }
 .input-busca{
 	position: absolute;
-	top: 10%;
-	left: 20%;
-	width: 20%;
+	top: 15%;
+	left: 40%;
+	width: 15%;
 }
 input {
 	border-radius: 20px;
